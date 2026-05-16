@@ -61,3 +61,5 @@ derby.log
 .pytest_cache/
 .coverage
 htmlcov/
+
+*.ipynb
