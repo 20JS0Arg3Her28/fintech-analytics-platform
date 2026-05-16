@@ -1,0 +1,63 @@
+[project]
+name = "fintech-analytics-platform"
+version = "0.1.0"
+description = "Plataforma end-to-end de analytics fintech con Spark, dbt y Airflow"
+authors = [
+    {name = "Tu Nombre", email = "tu@email.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+
+# Son las que se instalan siempre. Solo cosas que necesita el código base.
+dependencies = [
+    "polars>=1.0.0",
+    "faker>=25.0.0",
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.7.0",
+    "pydantic-settings>=2.3.0",
+    "pyarrow>=15.0.0",
+    "jupyter>=1.1.1",
+]
+
+# Dependencias opcionales agrupadas por propósito.
+[dependency-groups]
+spark = [
+    "pyspark==4.1.1",
+    "psycopg2-binary>=2.9.9",
+]
+
+dbt = [
+    "dbt-core>=1.8.0",
+    "dbt-postgres>=1.8.0",
+]
+
+dev = [
+    "ruff>=0.5.0",
+    "pytest>=8.0.0",
+    "pytest-cov>=5.0.0",
+    "ipython>=8.20.0",
+    "jupyterlab>=4.0.0",
+]
+
+# Ruff es el linter/formatter moderno de Python 
+# (reemplaza Black, isort, flake8 todos juntos, escrito en Rust). 
+# Más rápido y más estricto.
+[tool.ruff] 
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP", "B", "C4", "RET", "SIM"]
+ignore = ["E501"]
+
+# dice a pytest dónde buscar tests.
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

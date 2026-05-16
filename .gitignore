@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# uv
+.uv/
+
+# Entorno (NUNCA commitear)
+.env
+.env.local
+*.pem
+*.key
+
+# Datos (NO subir datos al repo)
+data/raw/*.csv
+data/raw/*.json
+data/raw/*.parquet
+data/bronze/
+data/silver/
+data/gold/
+!data/raw/.gitkeep
+!data/bronze/.gitkeep
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# dbt
+dbt_fintech/target/
+dbt_fintech/dbt_packages/
+dbt_fintech/logs/
+
+# Airflow
+dags/__pycache__/
+airflow.db
+airflow.cfg
+airflow-webserver.pid
+logs/
+
+# Spark
+spark-warehouse/
+metastore_db/
+derby.log
+
+# Tests
+.pytest_cache/
+.coverage
+htmlcov/
