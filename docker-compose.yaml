@@ -1,0 +1,27 @@
+# Docker Compose: define los servicios de la plataforma fintech.
+# Fase 2: solo PostgreSQL.
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: fintech_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: fintech_user
+      POSTGRES_PASSWORD: fintech_pass
+      POSTGRES_DB: fintech
+    ports:
+      - "5433:5432"
+    volumes:
+      # Persistencia, los datos sobreviven aunque se borre el contenedor
+      - postgres_data:/var/lib/postgresql/data
+      # Script de init: se ejecuta solo la primera vez
+      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fintech_user -d fintech"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    
+volumes:
+  postgres_data:

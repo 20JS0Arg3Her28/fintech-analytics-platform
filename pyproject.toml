@@ -17,6 +17,7 @@ dependencies = [
     "pydantic-settings>=2.3.0",
     "pyarrow>=15.0.0",
     "jupyter>=1.1.1",
+    "connectorx>=0.4.5",
 ]
 
 # Dependencias opcionales agrupadas por propósito.

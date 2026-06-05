@@ -22,7 +22,6 @@ def _find_project_root() -> Path:
             return parent
     raise RuntimeError("No se encontró pyproject.toml; ¿estás dentro del proyecto?")
 
-
 PROJECT_ROOT = _find_project_root()
 
 class Settings(BaseSettings):
@@ -63,6 +62,14 @@ class Settings(BaseSettings):
         """URL SQLAlchemy para conexiones Python directa."""
         return (
             f"postgresql+psycopg2://{self.pg_user}:{self.pg_password}"
+            f"@{self.pg_host}:{self.pg_port}/{self.pg_database}"
+        )
+
+    @property
+    def pg_connectorx_url(self) -> str:
+        """URL para connectorx (Polars). Sin el sufijo '+psycopg2'."""
+        return (
+            f"postgresql://{self.pg_user}:{self.pg_password}"
             f"@{self.pg_host}:{self.pg_port}/{self.pg_database}"
         )
 
