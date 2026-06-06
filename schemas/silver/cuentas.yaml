@@ -1,0 +1,10 @@
+table: cuentas
+description: "Cuentas bancarias asociadas a clientes"
+fields:
+  - {name: cuenta_id,      type: string, nullable: false}
+  - {name: cliente_id,     type: string, nullable: false, description: "FK a clientes"}
+  - {name: tipo_cuenta,    type: string, nullable: true,  description: "AHORROS, CORRIENTE, CREDITO"}
+  - {name: moneda,         type: string, nullable: true,  description: "GTQ, USD, EUR"}
+  - {name: fecha_apertura, type: date,   nullable: true}
+  - {name: estado,         type: string, nullable: true,  description: "ACTIVA, CERRADA, CONGELADA"}
+  - {name: saldo_inicial,  type: double, nullable: true}

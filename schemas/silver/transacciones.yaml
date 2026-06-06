@@ -1,0 +1,13 @@
+table: transacciones
+description: "Movimientos de cuentas - tabla principal de hechos"
+fields:
+  - {name: transaccion_id,     type: string,    nullable: false}
+  - {name: cuenta_id,          type: string,    nullable: false, description: "FK a cuentas"}
+  - {name: timestamp_tx,       type: timestamp, nullable: true}
+  - {name: monto,              type: double,    nullable: true,  description: "Siempre positivo despues de limpieza"}
+  - {name: tipo_tx,            type: string,    nullable: true}
+  - {name: comercio,           type: string,    nullable: true,  description: "Solo para PAGO_TARJETA y COMPRA_ONLINE"}
+  - {name: categoria_comercio, type: string,    nullable: true}
+  - {name: pais_tx,            type: string,    nullable: true}
+  - {name: ciudad_tx,          type: string,    nullable: true}
+  - {name: canal,              type: string,    nullable: true}

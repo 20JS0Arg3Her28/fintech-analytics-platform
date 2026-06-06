@@ -1,0 +1,14 @@
+# Schema de la tabla staging.clientes
+# Contrato: estas son las columnas y tipos que la capa silver garantiza.
+table: clientes
+description: "Datos de clientes del banco"
+fields:
+  - {name: cliente_id,       type: string,    nullable: false, description: "ID unico del cliente"}
+  - {name: nombre_completo,  type: string,    nullable: true}
+  - {name: email,            type: string,    nullable: true}
+  - {name: telefono,         type: string,    nullable: true}
+  - {name: pais,             type: string,    nullable: true}
+  - {name: ciudad,           type: string,    nullable: true}
+  - {name: fecha_registro,   type: date,      nullable: true,  description: "Fecha de alta del cliente"}
+  - {name: segmento,         type: string,    nullable: true,  description: "PERSONAL, PREMIUM, BUSINESS"}
+  - {name: fecha_nacimiento, type: date,      nullable: true}
